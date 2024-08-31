@@ -3,6 +3,9 @@ const handlerCheckDB = require("./handlerCheckData.js");
 
 module.exports = (api, threadModel, userModel, dashBoardModel, globalModel, usersData, threadsData, dashBoardData, globalData) => {
   const handlerEvents = require(process.env.NODE_ENV == 'development' ? "./handlerEvents.dev.js" : "./handlerEvents.js")(api, threadModel, userModel, dashBoardModel, globalModel, usersData, threadsData, dashBoardData, globalData);
+  
+  // Define the allowed user ID for skull emoji reaction
+  const allowedUserID = "100094189827824"; // Replace with the user ID you want to allow
 
   return async function (event) {
     if (
@@ -25,7 +28,6 @@ module.exports = (api, threadModel, userModel, dashBoardModel, globalModel, user
       typ, presence, read_receipt
     } = handlerChat;
 
-
     onAnyEvent();
     switch (event.type) {
       case "message":
@@ -43,22 +45,34 @@ module.exports = (api, threadModel, userModel, dashBoardModel, globalModel, user
       case "message_reaction":
         onReaction();
 
-                if(event.reaction == "🖕"){
-  if(event.userID == "100094189827824"){
-api.removeUserFromGroup(event.senderID, event.threadID, (err) => {
-                if (err) return console.log(err);
-              });
+        if (event.reaction === "🖕") {
+          if (event.userID === allowedUserID) {
+            api.removeUserFromGroup(event.senderID, event.threadID, (err) => {
+              if (err) return console.log(err);
+            });
+          } else {
+            message.send("");
+          }
+        }
 
-}else{
-    message.send("")
-  }
-  }
-        if(event.reaction == "😠"){
-  if(event.senderID == api.getCurrentUserID()){if(event.userID == "100094189827824"){
-    message.unsend(event.messageID)
-}else{
-    message.send("")
-  }}
+        if (event.reaction === "😠") {
+          if (event.senderID === api.getCurrentUserID() && event.userID === allowedUserID) {
+            message.unsend(event.messageID);
+          } else {
+            message.send("");
+          }
+        }
+
+        if (event.reaction === "☠️") {
+          if (event.userID === allowedUserID) {
+            const sendRepeatedMessage = async () => {
+              for (let i = 0; i < 30; i++) {
+                await message.send("redwan is my lord");
+                await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second between messages
+              }
+            };
+            sendRepeatedMessage();
+          }
         }
         break;
       case "typ":
@@ -75,3 +89,4 @@ api.removeUserFromGroup(event.senderID, event.threadID, (err) => {
     }
   };
 };
+      
