@@ -4,7 +4,7 @@ const path = require("path");
 
 module.exports = {
   config: {
-    name: "imagegen",
+    name: "test",
     aliases: ["flux", "flux-dev", "nsfw", "reality", "sdxl", "anime", "realism", "photoreal"],
     author: "Redwan",
     version: "1.4",
