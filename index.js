@@ -1,5 +1,5 @@
 /**
- * @author NTKhang
+ * @author Redwan
  * ! The source code is written by Redwan, please don't change the author's name everywhere. Thank you for using
  * ! Official source code: https://github.com/adreniods/anchestor-ai/
  * ! If you do not download the source code from the above address, you are using an unknown version and at risk of having your account hacked
