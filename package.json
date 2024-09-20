@@ -1,14 +1,14 @@
 {
 	"name": "anchestor-ai",
-	"version": "1.5.24",
-	"description": "Anchestor Ai Created By Redwan.",
+	"version": "1.5.31",
+	"description": "A simple Bot chat messenger using personal account. Made by redwan.",
 	"main": "index.js",
 	"engines": {
 		"node": "16.x",
 		"npm": ">=7.0.0"
 	},
 	"dependencies": {
-		"@distube/ytdl-core": "^4.13.2",
+		"@distube/ytdl-core": "^4.13.3",
 		"axios": "^1.4.0",
 		"bcrypt": "^5.0.1",
 		"canvas": "^2.9.1",
@@ -16,7 +16,6 @@
 		"child_process": "^1.0.2",
 		"connect-flash": "^0.1.1",
 		"cookie-parser": "^1.4.6",
-		"discord-image-generation": "^1.4.13",
 		"eta": "^1.12.3",
 		"express": "^4.18.1",
 		"express-fileupload": "^1.4.0",
@@ -51,21 +50,21 @@
 		"websocket-stream": "^5.5.2"
 	},
 	"scripts": {
-		"start": "node index.js",
-		"dev": "node index.js",
-		"prod": "node index.js"
+		"start": "set NODE_ENV=&& node index.js",
+		"dev": "set NODE_ENV=development&& node index.js",
+		"prod": "set NODE_ENV=production&& node index.js"
 	},
-	"author": "Redwan",
+	"author": "NTKhang",
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/adreniods/anchestor-ai"
+		"url": "git+https://github.com/ntkhang03/Goat-Bot-V2.git"
 	},
 	"keywords": [],
 	"bugs": {
-		"url": "https://github.com/adreniods/anchestor-ai"
+		"url": "https://github.com/ntkhang03/Goat-Bot-V2/issues"
 	},
-	"homepage": "https://github.com/adreniods/anchestor-ai/readme.md",
+	"homepage": "https://github.com/ntkhang03/Goat-Bot-V2#readme",
 	"devDependencies": {
 		"eslint": "^8.2.0",
 		"eslint-config-airbnb": "^19.0.4",
@@ -84,37 +83,5 @@
 		"prettier": "^2.7.1",
 		"prompt-checkbox": "^2.2.0",
 		"terser": "^5.15.0"
-	},
-	"eslintConfig": {
-		"env": {
-			"commonjs": true,
-			"es2021": true,
-			"node": true
-		},
-		"extends": "eslint:recommended",
-		"parserOptions": {
-			"ecmaVersion": 13
-		},
-		"rules": {
-			"no-prototype-builtins": 0,
-			"no-unused-vars": 1,
-			"comma-dangle": 1,
-			"no-redeclare": 0,
-			"prefer-const": 1,
-			"no-useless-escape": 0,
-			"no-mixed-spaces-and-tabs": 0,
-			"semi": 1,
-			"no-useless-catch": 0,
-			"no-empty": 0,
-			"use-isnan": 0,
-			"no-extra-semi": 1,
-			"no-async-promise-executor": 0,
-			"no-unreachable": 1,
-			"no-var": 1,
-			"no-fallthrough": 1
-		},
-		"ignorePatterns": [
-			"*.eta"
-		]
 	}
 }
